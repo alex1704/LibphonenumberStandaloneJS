@@ -51,8 +51,13 @@ libphone_commit=$(git rev-parse HEAD)
 should_tweak=$(grep "compiler_unshaded_deploy.jar" javascript/build.xml)
 if [ -n "$should_tweak" ]; then
     printMsg "Tweaking libphonenumber/javascript/build.xml" $BLUE
-    sed -i '' '/name="closure-compiler.dir"/,+3 d' javascript/build.xml
-    sed -i '' 's/ADVANCED_OPTIMIZATIONS/SIMPLE_OPTIMIZATIONS/' javascript/build.xml
+    if [ "$(uname)" == "Darwin" ]; then
+        sed -i '' '/name="closure-compiler.dir"/,+3 d' javascript/build.xml
+        sed -i '' 's/ADVANCED_OPTIMIZATIONS/SIMPLE_OPTIMIZATIONS/' javascript/build.xml
+    else 
+        sed -i '/name="closure-compiler.dir"/,+3 d' javascript/build.xml
+        sed -i 's/ADVANCED_OPTIMIZATIONS/SIMPLE_OPTIMIZATIONS/' javascript/build.xml
+    fi
     awk 'NR==4{print "<property name=\"closure-compiler.jar\"\n\tvalue=\"${basedir}/../../closure-compiler-v20210302.jar\"/>"}1' javascript/build.xml > build-tmp && mv build-tmp javascript/build.xml
 fi
 
