@@ -1,6 +1,6 @@
 # Description
 
-`libphonenumber.js` encapsulate Google's [libphonenumber](https://github.com/google/libphonenumber/tree/master/javascript) functionality in standalone javascript file. It exposes several libphonenumber's interfaces on which more functionality can be built up.  
+`libphonenumber.js` encapsulate Google's [libphonenumber](https://github.com/google/libphonenumber/tree/master/javascript) functionality in standalone javascript file. It exposes several libphonenumber's interfaces on which more functionality can be built up. Documentation for underlying libphonenumber's functionality can be found [here](https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/latest/index.html).  
 Besides library itself, repository contains `generate.sh` bash scrirpt which allows to generate up to date `libphonenumber.js`.
 
 # API
